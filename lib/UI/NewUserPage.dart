@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_gmr_run/Contracts/LoginPresenterContract.dart';
-import 'package:flutter_gmr_run/Data/User.dart';
+import 'package:flutter_gmr_run/Data/Model/User.dart';
 import 'package:flutter_gmr_run/Presenter/LoginPresenter.dart';
 import 'package:flutter_gmr_run/UI/ChoicesPage.dart';
 import 'package:path/path.dart';
@@ -12,6 +12,7 @@ class LoginPage extends StatelessWidget implements LoginPresenterContract{
 
   String _userName;
   String _password;
+  String _confirmPassword;
 
   LoginPresenter _loginPresenter;
   LoginPage(){
@@ -31,7 +32,8 @@ class LoginPage extends StatelessWidget implements LoginPresenterContract{
               new TextField(onChanged: (userName){_userName = userName;},),
               new Text("Please enter your password"),
               new TextField(onChanged: (password){_password = password;},),
-
+              new Text("Please confirm your password"),
+              new TextField(onChanged: (String confirmPassword){_confirmPassword = confirmPassword;},),
                new Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -47,7 +49,7 @@ class LoginPage extends StatelessWidget implements LoginPresenterContract{
   }
 
   _onOkPressed(BuildContext context) {
-    if(User.isValid(_userName)){
+    if(User.isValid(_userName,_password,_confirmPassword)){
       saveUser(_userName,_password);
       Navigator.push(
         context,
@@ -62,7 +64,7 @@ class LoginPage extends StatelessWidget implements LoginPresenterContract{
   _onCancelPressed(BuildContext context) {}
 
   Future saveUser(String userName, String password) async {
-    _loginPresenter.setUser(_userName,_password);
+    _loginPresenter.setUser(new User(_userName, _password));
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     sharedPreferences.setString("KEY_USER", userName);
     sharedPreferences.setString("KEY_PASSWORD", password);
