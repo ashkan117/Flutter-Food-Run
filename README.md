@@ -1,8 +1,9 @@
 # flutter_gmr_run
 
-A new Flutter application.
 
-![Screenshot](C:\Users\Ashkan\AndroidStudioProjects\flutter_gmr_run\Login Screen.png)
+
+![login screen](https://user-images.githubusercontent.com/30095041/46911887-059d5b80-cf1d-11e8-8c4e-abbe9cd802e6.PNG)
+
 
 ## Getting Started
 
