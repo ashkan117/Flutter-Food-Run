@@ -2,7 +2,7 @@
 
 A new Flutter application.
 
-![Screenshot](Login Screen.png)
+![Screenshot](C:\Users\Ashkan\AndroidStudioProjects\flutter_gmr_run\Login Screen.png)
 
 ## Getting Started
 
